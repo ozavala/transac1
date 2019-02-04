@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_date: 2019-02-04
+  to_date: 2019-02-04
+  party: one
+  gl_account: one
+  accounting_period: one
+
+two:
+  from_date: 2019-02-04
+  to_date: 2019-02-04
+  party: two
+  gl_account: two
+  accounting_period: two
