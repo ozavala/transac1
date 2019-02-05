@@ -12,6 +12,11 @@ require 'faker'
 #   party_type: 'ORG',
 #   name: 'Round One'
 # )
+
+# Party.create(
+#   party_type: 'ORG',
+#   name: 'Banco Bolivariano'
+# )
 #
 # 2.times do Party.create(
 #   party_type: 'ORG',
@@ -31,38 +36,38 @@ require 'faker'
 #
 # #**** Tipo de cuentas ****
 #
-activo = AccountType.create(
-  acc_type_code: 'Activo',
-  classification: 'Balance'
-)
+# activo = AccountType.create(
+#   acc_type_code: 'Activo',
+#   classification: 'Balance'
+# )
+# #
+# pasivo = AccountType.create(
+#   acc_type_code: 'Pasivo',
+#   classification: 'Balance'
+# )
 #
-pasivo = AccountType.create(
-  acc_type_code: 'Pasivo',
-  classification: 'Balance'
-)
-
-capital = AccountType.create(
-  acc_type_code: 'Capital',
-  classification: 'Balance'
-)
-
-ingreso = AccountType.create(
-  acc_type_code: 'Ingreso',
-  classification: 'Perdidas o Ganacias'
-)
-
-gasto = AccountType.create(
-  acc_type_code: 'Gasto',
-  classification: 'Perdidas o Ganacias'
-)
+# capital = AccountType.create(
+#   acc_type_code: 'Capital',
+#   classification: 'Balance'
+# )
+#
+# ingreso = AccountType.create(
+#   acc_type_code: 'Ingreso',
+#   classification: 'Perdidas o Ganacias'
+# )
+#
+# gasto = AccountType.create(
+#   acc_type_code: 'Gasto',
+#   classification: 'Perdidas o Ganacias'
+# )
 # #
 # # puts "5 GlAccountType created"
 # # #
- activo = AccountType.find_by(acc_type_code: 'Activo')
- pasivo = AccountType.find_by(acc_type_code: 'Pasivo')
- capital = AccountType.find_by(acc_type_code: 'Capital')
- gasto = AccountType.find_by(acc_type_code: 'Gasto')
- ingreso = AccountType.find_by(acc_type_code: 'Ingreso')
+ # activo = AccountType.find_by(acc_type_code: 'Activo')
+ # pasivo = AccountType.find_by(acc_type_code: 'Pasivo')
+ # capital = AccountType.find_by(acc_type_code: 'Capital')
+ # gasto = AccountType.find_by(acc_type_code: 'Gasto')
+ # ingreso = AccountType.find_by(acc_type_code: 'Ingreso')
 #
 #
 # #*** Cuentas de Activo Corriente ****
@@ -238,234 +243,276 @@ gasto = AccountType.create(
 #   name: 'Contra Capital ',
 #   description: 'Deuda de socios de capital '
 # )
-
-capital.gl_accounts.create(
-  acc_code: '3030',
-  acc_parent_code: '3000',
-  name: 'Utilidades Retenidas',
-  description: 'Utilidades retenidas para reinversión'
-)
-
-puts "Cuentas de Capital creadas"
-
-#**** Cuentas de Ingreso ****
-ingreso.gl_accounts.create(
-  acc_code: '4',
-  acc_parent_code: nil,
-  name: 'Ingresos',
-  description: 'Ingresos'
-)
-
-ingreso.gl_accounts.create(
-  acc_code: '4000',
-  acc_parent_code: '4',
-  name: 'Ingresos Varios',
-  description: 'Ingresos'
-)
-
-ingreso.gl_accounts.create(
-  acc_code: '4010',
-  acc_parent_code: '4000',
-  name: 'Venta de Membresías',
-  description: 'Ingresos obtenidos de las ventas de membresía'
-)
-
-ingreso.gl_accounts.create(
-  acc_code: '4020',
-  acc_parent_code: '4000',
-  name: 'Venta de Servicios',
-  description: 'Venta de servicios'
-)
-
-ingreso.gl_accounts.create(
-  acc_code: '4030',
-  acc_parent_code: '4000',
-  name: 'Ingresos por Publicidad',
-  description: 'Venta de publicidad'
-)
-puts "Cuentas de Ingreso creadas"
-
-##**** Cuentas de Gasto ****
-
-gasto.gl_accounts.create(
-  acc_code: '5',
-  acc_parent_code: nil,
-  name: 'Gastos',
-  description: 'Gastos Operacionales'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5000',
-  acc_parent_code: '5',
-  name: 'Gastos de Operación',
-  description: 'Gastos Operacionales'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5005',
-  acc_parent_code: '5000',
-  name: 'Comisiones por Ventas',
-  description: 'Comisiones pagadas'
- )
-
-gasto.gl_accounts.create(
-  acc_code: '5010',
-  acc_parent_code: '5000',
-  name: 'Promoción de Ventas',
-  description: 'Costo de promociones'
- )
-
-gasto.gl_accounts.create(
-  acc_code: '5020',
-  acc_parent_code: '5000',
-  name: 'Publicidad',
-  description: 'Costo de publicidad'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5040',
-  acc_parent_code: '5000',
-  name: 'Gasto de Mercadeo',
-  description: 'Costo de marketing'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5200',
-  acc_parent_code: '5000',
-  name: 'Rol de Pagos',
-  description: 'Pagos de roles'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5210',
-  acc_parent_code: '5000',
-  name: 'Labores Contratadas',
-  description: 'Labores externas contratadas'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5280',
-  acc_parent_code: '5000',
-  name: 'Alquiler',
-  description: 'Alquiler'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5281',
-  acc_parent_code: '5000',
-  name: 'Pago Alícuota',
-  description: 'Alquiler'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5300',
-  acc_parent_code: '5000',
-  name: 'Empresas de Servicios',
-  description: 'Costo de servicios elec. tel y agua'
-)
-gasto.gl_accounts.create(
-  acc_code: '5310',
-  acc_parent_code: '5300',
-  name: 'Gasto de Agua',
-  description: 'Costo de servicios  agua'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5320',
-  acc_parent_code: '5300',
-  name: 'Gasto de Electricidad',
-  description: 'Costo de servicios  energía eléctrica'
-)
-
-gasto.gl_accounts.create(
-  acc_code: '5390',
-  acc_parent_code: '5300',
-  name: 'Servicios Profesionales',
-  description: 'Servicios profesionales'
-)
-puts "Cuentas de Gasto creadas"
+#
+# capital.gl_accounts.create(
+#   acc_code: '3030',
+#   acc_parent_code: '3000',
+#   name: 'Utilidades Retenidas',
+#   description: 'Utilidades retenidas para reinversión'
+# )
+#
+# puts "Cuentas de Capital creadas"
+#
+# #**** Cuentas de Ingreso ****
+# ingreso.gl_accounts.create(
+#   acc_code: '4',
+#   acc_parent_code: nil,
+#   name: 'Ingresos',
+#   description: 'Ingresos'
+# )
+#
+# ingreso.gl_accounts.create(
+#   acc_code: '4000',
+#   acc_parent_code: '4',
+#   name: 'Ingresos Varios',
+#   description: 'Ingresos'
+# )
+#
+# ingreso.gl_accounts.create(
+#   acc_code: '4010',
+#   acc_parent_code: '4000',
+#   name: 'Venta de Membresías',
+#   description: 'Ingresos obtenidos de las ventas de membresía'
+# )
+#
+# ingreso.gl_accounts.create(
+#   acc_code: '4020',
+#   acc_parent_code: '4000',
+#   name: 'Venta de Servicios',
+#   description: 'Venta de servicios'
+# )
+#
+# ingreso.gl_accounts.create(
+#   acc_code: '4030',
+#   acc_parent_code: '4000',
+#   name: 'Ingresos por Publicidad',
+#   description: 'Venta de publicidad'
+# )
+# puts "Cuentas de Ingreso creadas"
+#
+# ##**** Cuentas de Gasto ****
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5',
+#   acc_parent_code: nil,
+#   name: 'Gastos',
+#   description: 'Gastos Operacionales'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5000',
+#   acc_parent_code: '5',
+#   name: 'Gastos de Operación',
+#   description: 'Gastos Operacionales'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5005',
+#   acc_parent_code: '5000',
+#   name: 'Comisiones por Ventas',
+#   description: 'Comisiones pagadas'
+#  )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5010',
+#   acc_parent_code: '5000',
+#   name: 'Promoción de Ventas',
+#   description: 'Costo de promociones'
+#  )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5020',
+#   acc_parent_code: '5000',
+#   name: 'Publicidad',
+#   description: 'Costo de publicidad'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5040',
+#   acc_parent_code: '5000',
+#   name: 'Gasto de Mercadeo',
+#   description: 'Costo de marketing'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5200',
+#   acc_parent_code: '5000',
+#   name: 'Rol de Pagos',
+#   description: 'Pagos de roles'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5210',
+#   acc_parent_code: '5000',
+#   name: 'Labores Contratadas',
+#   description: 'Labores externas contratadas'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5280',
+#   acc_parent_code: '5000',
+#   name: 'Alquiler',
+#   description: 'Alquiler'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5281',
+#   acc_parent_code: '5000',
+#   name: 'Pago Alícuota',
+#   description: 'Alquiler'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5300',
+#   acc_parent_code: '5000',
+#   name: 'Empresas de Servicios',
+#   description: 'Costo de servicios elec. tel y agua'
+# )
+# gasto.gl_accounts.create(
+#   acc_code: '5310',
+#   acc_parent_code: '5300',
+#   name: 'Gasto de Agua',
+#   description: 'Costo de servicios  agua'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5320',
+#   acc_parent_code: '5300',
+#   name: 'Gasto de Electricidad',
+#   description: 'Costo de servicios  energía eléctrica'
+# )
+#
+# gasto.gl_accounts.create(
+#   acc_code: '5390',
+#   acc_parent_code: '5300',
+#   name: 'Servicios Profesionales',
+#   description: 'Servicios profesionales'
+# )
+# puts "Cuentas de Gasto creadas"
 #
 #
-# #**** Tipo de Transacciones  ****
+#**** Tipo de Transacciones  ****
 #
-# AccountingTransactionType.create(
+# TransactionType.create(
 #   transaction_type_code: 'Venta',
 #   description: 'Venta de membresías o productos'
 # )
 #
-# AccountingTransactionType.create(
+# TransactionType.create(
 #   transaction_type_code: 'Pago',
 #   description: 'Pago contra caja o con cheque'
 # )
 #
-# AccountingTransactionType.create(
+# TransactionType.create(
 #   transaction_type_code: 'Transferencia Externa',
 #   description: 'Transferencias entre ctas externas o internas a externas'
-# )
+#   )
+#
+#   TransactionType.create(
+#     transaction_type_code: 'Transferencia Interna',
+#     description: 'Transferencias entre ctas internas'
+#   )
 # puts "Trasaction Types created"
 #
 # #**** Transacciones ****
 #
-# AccountingTransaction.create(
-#   transaction_date:Time.now,
-#   entry_date: Time.now,
-#   description: 'Venta de membresía',
-#   transaction_type_code: 'Venta',
-#   to_party_id: 1,
-#   from_party_id: 4,
-#   from_org_party_id: nil
-# )
+party1 = Party.find 1
+party2 = Party.find 2
+
+party4 = Party.find 4
+party5 = Party.find 5
+
+venta = TransactionType.find_by( transaction_type_code: 'Venta')
+
+  GlTransaction.create(
+  transaction_date:Time.now,
+  entry_date: Time.now,
+  description: 'Venta de membresía niños',
+  transaction_type_id: venta.id,
+  to_party: party1.id,
+  from_party: party5.id,
+  )
+
+TransactionDetail.create(
+  detail_seq: 1,
+  amount: 65.00,
+  dbcr_flag: 'Debit',
+  party_id: party1.id,
+  parent_detail_seq: nil,
+  gl_account_id: 28,
+  gl_transaction_id: 1
+  )
+
+TransactionDetail.create(
+  detail_seq: 2,
+  amount: 65.00,
+  dbcr_flag: 'Credit',
+  party_id: party1.id,
+  parent_detail_seq: 1,
+  gl_account_id: 3,
+  gl_transaction_id: 1
+  )
+
+  GlTransaction.create(
+    transaction_date:Time.now,
+    entry_date: Time.now,
+    description: 'Venta de membresía regular',
+    transaction_type_id: venta.id,
+    to_party: party1.id,
+    from_party: party4.id
+    )
+
+  TransactionDetail.create(
+    detail_seq: 1,
+    amount: 100.00,
+    dbcr_flag: 'Debit',
+    party_id: party1.id,
+    parent_detail_seq: nil,
+    gl_account_id: 28,
+    gl_transaction_id: 2
+    )
+
+  TransactionDetail.create(
+    detail_seq: 2,
+    amount: 100.00,
+    dbcr_flag: 'Credit',
+    party_id: party1.id,
+    parent_detail_seq: nil,
+    gl_account_id: 3,
+    gl_transaction_id: 2
+    )
 #
-# TransactionDetail.create(
-#   detail_seq: 1,
-#   amount: 6500,
-#   debit_credit_flag: 'Debit',
-#   party_id: 1,
-#   gl_account_id: 17,
-#   parent_transaction_id: 1,
-#   parent_detail_seq: nil
-# )
-#
-# TransactionDetail.create(
-#   detail_seq: 2,
-#   amount: 6500,
-#   debit_credit_flag: 'Credit',
-#   party_id: 1,
-#   gl_account_id: 2,
-#   parent_transaction_id: 1,
-#   parent_detail_seq: 1
-# )
-#
-# AccountingTransaction.create(
-#   transaction_date:Time.now,
-#   entry_date: Time.now,
-#   description: 'Transferencia a Banco Bolivariano Cta. Cte. 023456',
-#   transaction_type_code: 'Transferencia Externa',
-#   to_party_id: 2,
-#   from_party_id: nil,
-#   from_org_party_id: 1
-# )
-#
-# TransactionDetail.create(
-#   detail_seq: 1,
-#   amount: 6500,
-#   debit_credit_flag: 'Debit',
-#   party_id: 1,
-#   gl_account_id: 2,
-#   parent_transaction_id: 2,
-#   parent_detail_seq: 1
-# )
-#
-# TransactionDetail.create(
-#   detail_seq: 2,
-#   amount: 6500,
-#   debit_credit_flag: 'Credit',
-#   party_id: 1,
-#   gl_account_id: 4,
-#   parent_transaction_id: 2,
-#   parent_detail_seq: 2
-# )
-# puts " 2 transactions and details created"
+trfs = TransactionType.find_by( transaction_type_code: 'Transferencia Externa')
+
+GlTransaction.create(
+  transaction_date: Time.now,
+  entry_date: Time.now,
+  description: 'Transferencia a Banco Bolivariano Cta. Cte. 023456',
+  transaction_type_id: trfs.id,
+  to_party: party2.id,
+  from_party: party1.id
+)
+
+TransactionDetail.create(
+  detail_seq: 1,
+  amount: 80.00,
+  dbcr_flag: 'Debit',
+  party_id: party1.id,
+  parent_detail_seq: nil,
+  gl_account_id: 3,
+  gl_transaction_id: 3
+ )
+
+TransactionDetail.create(
+  detail_seq: 2,
+  amount: 80.00,
+  dbcr_flag: 'Credit',
+  party_id: party1.id,
+  parent_detail_seq: 1,
+  gl_account_id: 6,
+  gl_transaction_id: 3
+  )
+puts " 3 transactions and details created"
 #
 # #**** Account Groups ****
 #

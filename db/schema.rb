@@ -43,10 +43,8 @@ ActiveRecord::Schema.define(version: 2019_02_04_161353) do
     t.date "entry_date"
     t.string "description"
     t.bigint "transaction_type_id"
-    t.bigint "to_party_id"
-    t.bigint "from_party_id"
-    t.index ["from_party_id"], name: "index_gl_transactions_on_from_party_id"
-    t.index ["to_party_id"], name: "index_gl_transactions_on_to_party_id"
+    t.integer "to_party"
+    t.integer "from_party"
     t.index ["transaction_type_id"], name: "index_gl_transactions_on_transaction_type_id"
   end
 
@@ -94,6 +92,8 @@ ActiveRecord::Schema.define(version: 2019_02_04_161353) do
   add_foreign_key "accounting_periods", "parties"
   add_foreign_key "accounting_periods", "period_types"
   add_foreign_key "gl_accounts", "account_types"
+  add_foreign_key "gl_transactions", "parties", column: "from_party"
+  add_foreign_key "gl_transactions", "parties", column: "to_party"
   add_foreign_key "gl_transactions", "transaction_types"
   add_foreign_key "organization_accounts", "accounting_periods"
   add_foreign_key "organization_accounts", "gl_accounts"

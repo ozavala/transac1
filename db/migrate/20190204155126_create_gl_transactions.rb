@@ -5,9 +5,11 @@ class CreateGlTransactions < ActiveRecord::Migration[5.2]
       t.date :entry_date
       t.string :description
       t.references :transaction_type, foreign_key: true
-      t.references :to_party
-      t.references :from_party
-
+      t.integer :to_party
+      t.integer :from_party
     end
+    add_foreign_key :gl_transactions, :parties, column: :to_party
+    add_foreign_key :gl_transactions, :parties, column: :from_party
+
   end
 end

@@ -47,10 +47,9 @@ module PagesHelper
                 <th>ID</th>
                 <th>Fecha Entrada</th>
                 <th>Descripción</th>
-                <th>Tipo de Transacción</th>
+                <th>Tipo de Trans.</th>
                 <th>Hacia</th>
                 <th>Desde</th>
-                <th>Desde Org</th>
               </tr>")
           trans_file.puts(
               "<tr>
@@ -58,23 +57,23 @@ module PagesHelper
                 <td>#{tra.entry_date}</td>
                 <td>#{tra.description}</td>
                 <td>#{tra.transaction_type_id}</td>
-                <td>#{tra.to_party_id}</td>
-                <td>#{tra.from_party_id}</td>
+                <td>#{tra.to_party}</td>
+                <td>#{tra.from_party}</td>
               </tr>
             </table>")
-          detrans = TransactionDetail.where("transaction_id = #{tra.id}")
+          detrans = TransactionDetail.where("gl_transaction_id = #{tra.id}")
           trans_file.puts(
             '<table>
-              <h5>Detalle de Transacciones</h5>')
+              <h5>Detalle de Transacción</h5>')
               trans_file.puts(
                "<tr>
                  <th>ID</th>
                  <th>No. Sec</th>
                  <th>Cantidad</th>
                  <th>Clase</th>
-                 <th>Participante</th>
-                 <th>Código de Cta </th>
-                 <th>Transacción ID</th>
+                 <th>Parti</th>
+                 <th>Cuenta </th>
+                 <th>No. Trans.</th>
                  <th>Sec padre</th>
                </tr>")
           detrans.each do |det|
@@ -121,7 +120,7 @@ module PagesHelper
     income_file.puts(
       "<th><h5>Débitos</h5></th>")
         db_ins.each do |db|
-          ac_db_name = GeneralLedgerAccount.find(db.id).name
+          ac_db_name = GlAccount.find(db.id).name
       income_file.puts(
       "<tr>
           <td></td>
