@@ -2,14 +2,15 @@
 <p>Menu Options</p>
 <table>
   <tr>
-    <td><a href="#">Crear Tabla de Cuentas<%PagesHelper::create_gl_chart_of_accounts_report%></a>
-    </td>
-    <td><%=link_to 'Reporte de Cuentas',reports_gl_chart_of_accounts_path %>
-    </td>
+    <td><a href="#">Crear Tabla de Cuentas - html  <%PagesHelper::create_chart_of_accounts_html%></a></td>
+    <td><%=link_to 'Reporte de Cuentas',reports_gl_accounts_html_path %></td>
+    <td><%= link_to "Printable Chart of Accounts (PDF)", root_path( format: 'pdf') %></td>
   </tr>
+
     <tr>
       <td><a href="#">Crear Reporte de Transacciones <%PagesHelper::create_transactions_report%></a></td>
       <td><%=link_to 'Mostrar Transacciones',reports_account_transactions_path %></td>
+      <td><%= link_to "Printable Transactions (PDF)", pages_transactions_path( format: 'pdf') %></td>
     </tr>
     <tr>
       <td><a href="#">Crear Balance de Ingresos <%PagesHelper::create_income_report%></a></td>

@@ -1,8 +1,9 @@
 module PagesHelper
+  require 'prawn'
 
 
-  def self.create_gl_chart_of_accounts_report
-    chart_file = File.new("app/views/reports/gl_chart_of_accounts.html.erb", "w")
+  def self.create_chart_of_accounts_html
+    chart_file = File.new("app/views/reports/gl_accounts.html.erb", "w")
     glacs = GlAccount.order(:acc_code).all
 
       chart_file.puts(
@@ -32,6 +33,10 @@ module PagesHelper
     chart_file.puts('</table>')
     chart_file.close
   end
+
+  
+
+
 
   def self.create_transactions_report
     trans_file = File.new("app/views/reports/account_transactions.html.erb", "w")
